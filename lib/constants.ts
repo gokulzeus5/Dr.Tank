@@ -78,9 +78,8 @@ export const SERVICES: ServiceItem[] = [
       "Water tank cleaning services near me",
       "Water tank cleaning near me",
     ],
-    image:
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80",
-    alt: "Professional technician cleaning residential water tank storage system in Kerala",
+    image: "/images/Residential Water Tank Cleaning.jpeg",
+    alt: "Residential water tank cleaning services in Kerala by Dr. Tank",
     prefilledMessage:
       "Hello Dr. Tank, I would like to enquire about Residential Water Tank Cleaning services for my home.",
   },
@@ -101,9 +100,8 @@ export const SERVICES: ServiceItem[] = [
       "Commercial water tank cleaning",
       "Water tank cleaning services Kerala",
     ],
-    image:
-      "https://images.unsplash.com/photo-1541888946425-d0fbb186156f?auto=format&fit=crop&w=1000&q=80",
-    alt: "Commercial building water tank cleaning and maintenance team in Kerala",
+    image: "/images/Commercial Water Tank Cleaning.jpeg",
+    alt: "Commercial building water tank cleaning and maintenance in Kerala",
     prefilledMessage:
       "Hello Dr. Tank, I would like to enquire about Commercial Water Tank Cleaning services for our facility.",
   },
@@ -124,9 +122,8 @@ export const SERVICES: ServiceItem[] = [
       "STP tank cleaning",
       "Sewage treatment plant tank cleaning Kerala",
     ],
-    image:
-      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1000&q=80",
-    alt: "Sewage Treatment Plant STP tank cleaning and maintenance services Kerala",
+    image: "/images/STP Tank Cleaning.jpeg",
+    alt: "Sewage Treatment Plant STP tank cleaning services in Kerala",
     prefilledMessage:
       "Hello Dr. Tank, I would like to enquire about STP Tank Cleaning services.",
   },
@@ -147,9 +144,8 @@ export const SERVICES: ServiceItem[] = [
       "ETP tank cleaning",
       "Industrial tank cleaning services Kerala",
     ],
-    image:
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1000&q=80",
-    alt: "Industrial Effluent Treatment Plant ETP tank cleaning in Kerala",
+    image: "/images/ETP Tank Cleaning.jpeg",
+    alt: "Effluent Treatment Plant ETP tank cleaning in Kerala",
     prefilledMessage:
       "Hello Dr. Tank, I would like to enquire about ETP Tank Cleaning services for our plant.",
   },
@@ -171,8 +167,7 @@ export const SERVICES: ServiceItem[] = [
       "Industrial water tank cleaning",
       "Industrial tank cleaning Kerala",
     ],
-    image:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=80",
+    image: "/images/WTP & Industrial Processing Tank Cleaning.jpeg",
     alt: "Water Treatment Plant WTP and industrial processing tank cleaning services",
     prefilledMessage:
       "Hello Dr. Tank, I would like to enquire about WTP & Industrial Processing Tank Cleaning services.",

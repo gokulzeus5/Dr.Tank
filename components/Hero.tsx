@@ -106,7 +106,7 @@ export default function Hero() {
               {/* Main Image Frame */}
               <div className="relative rounded-2xl overflow-hidden border border-[#E5E7EB] bg-white shadow-xl aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3]">
                 <Image
-                  src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=85"
+                  src="/images/heroImage.jpeg"
                   alt="Dr. Tank professional water tank cleaning services in Kerala"
                   fill
                   priority
