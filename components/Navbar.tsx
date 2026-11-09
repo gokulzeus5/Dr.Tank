@@ -122,6 +122,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              suppressHydrationWarning
               className="p-2 rounded-lg text-[#171717] hover:bg-[#F0FAFE] focus:outline-none focus:ring-2 focus:ring-[#22C4F2]"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}

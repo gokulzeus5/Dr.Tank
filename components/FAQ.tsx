@@ -45,6 +45,7 @@ export default function FAQ() {
                   type="button"
                   onClick={() => toggle(faq.id)}
                   aria-expanded={isOpen}
+                  suppressHydrationWarning
                   className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none"
                 >
                   <span className="text-base sm:text-lg font-bold text-[#171717] leading-snug">

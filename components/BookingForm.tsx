@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { KERALA_DISTRICTS, SERVICE_OPTIONS, BRAND } from "@/lib/constants";
+import React, { useState, useEffect } from "react";
+import { KERALA_DISTRICTS, SERVICE_OPTIONS } from "@/lib/constants";
 import { formatBookingMessage, createWhatsAppUrl, BookingFormData } from "@/lib/whatsapp";
 import { Calendar, User, Phone, MapPin, Wrench, FileText, Send, AlertCircle, CheckCircle2, Info } from "lucide-react";
 
@@ -11,15 +11,19 @@ export default function BookingForm() {
     mobileNumber: "",
     preferredDate: "",
     serviceType: SERVICE_OPTIONS[0],
-    district: KERALA_DISTRICTS[8], // Palakkad default (primary location)
+    district: KERALA_DISTRICTS[8], // Palakkad default
     additionalRequirements: "",
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [minDate, setMinDate] = useState<string>("");
 
-  // Set minimum date to today
-  const today = new Date().toISOString().split("T")[0];
+  useEffect(() => {
+    // Safely set minimum date on client mount to prevent timezone hydration differences
+    const localToday = new Date().toISOString().split("T")[0];
+    setMinDate(localToday);
+  }, []);
 
   const validate = (): boolean => {
     const newErrors: Record<string, string> = {};
@@ -31,7 +35,7 @@ export default function BookingForm() {
       newErrors.fullName = "Name must be at least 2 characters.";
     }
 
-    // Validate Indian Mobile Number: 10 digits, optionally with +91 or leading 0, starting with 6-9
+    // Validate Indian Mobile Number: 10 digits
     const cleanPhone = formData.mobileNumber.replace(/[\s-]/g, "").replace(/^\+91/, "").replace(/^0/, "");
     const indianPhoneRegex = /^[6-9]\d{9}$/;
     if (!formData.mobileNumber.trim()) {
@@ -66,14 +70,11 @@ export default function BookingForm() {
       return;
     }
 
-    // Format message
     const formattedMessage = formatBookingMessage(formData);
     const whatsappUrl = createWhatsAppUrl(formattedMessage);
 
-    // Set submitted state for friendly feedback
     setSubmitted(true);
 
-    // Open WhatsApp in a new tab
     if (typeof window !== "undefined") {
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     }
@@ -104,7 +105,12 @@ export default function BookingForm() {
           {/* Subtle top brand bar */}
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#22C4F2]"></div>
 
-          <form onSubmit={handleSubmit} noValidate className="space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="space-y-6"
+            suppressHydrationWarning
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Full Name */}
               <div>
@@ -128,6 +134,7 @@ export default function BookingForm() {
                       if (errors.fullName) setErrors({ ...errors, fullName: "" });
                     }}
                     placeholder="e.g. Ramesh Kumar"
+                    suppressHydrationWarning
                     className={`w-full pl-11 pr-4 py-3 rounded-xl border text-sm text-[#171717] placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
                       errors.fullName
                         ? "border-red-400 focus:ring-red-200 bg-red-50/20"
@@ -165,6 +172,7 @@ export default function BookingForm() {
                       if (errors.mobileNumber) setErrors({ ...errors, mobileNumber: "" });
                     }}
                     placeholder="e.g. 9876543210"
+                    suppressHydrationWarning
                     className={`w-full pl-11 pr-4 py-3 rounded-xl border text-sm text-[#171717] placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
                       errors.mobileNumber
                         ? "border-red-400 focus:ring-red-200 bg-red-50/20"
@@ -196,12 +204,13 @@ export default function BookingForm() {
                     type="date"
                     id="preferredDate"
                     name="preferredDate"
-                    min={today}
+                    min={minDate || undefined}
                     value={formData.preferredDate}
                     onChange={(e) => {
                       setFormData({ ...formData, preferredDate: e.target.value });
                       if (errors.preferredDate) setErrors({ ...errors, preferredDate: "" });
                     }}
+                    suppressHydrationWarning
                     className={`w-full pl-11 pr-4 py-3 rounded-xl border text-sm text-[#171717] focus:outline-none focus:ring-2 transition-all ${
                       errors.preferredDate
                         ? "border-red-400 focus:ring-red-200 bg-red-50/20"
@@ -237,6 +246,7 @@ export default function BookingForm() {
                       setFormData({ ...formData, serviceType: e.target.value });
                       if (errors.serviceType) setErrors({ ...errors, serviceType: "" });
                     }}
+                    suppressHydrationWarning
                     className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#E5E7EB] text-sm text-[#171717] bg-white focus:outline-none focus:ring-2 focus:border-[#22C4F2] focus:ring-[#22C4F2]/20 transition-all appearance-none cursor-pointer"
                   >
                     {SERVICE_OPTIONS.map((srv) => (
@@ -274,6 +284,7 @@ export default function BookingForm() {
                       setFormData({ ...formData, district: e.target.value });
                       if (errors.district) setErrors({ ...errors, district: "" });
                     }}
+                    suppressHydrationWarning
                     className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#E5E7EB] text-sm text-[#171717] bg-white focus:outline-none focus:ring-2 focus:border-[#22C4F2] focus:ring-[#22C4F2]/20 transition-all appearance-none cursor-pointer"
                   >
                     {KERALA_DISTRICTS.map((dist) => (
@@ -313,6 +324,7 @@ export default function BookingForm() {
                       setFormData({ ...formData, additionalRequirements: e.target.value })
                     }
                     placeholder="e.g. 1000L Sintex overhead tank + 3000L concrete sump in Palakkad..."
+                    suppressHydrationWarning
                     className="w-full pl-11 pr-4 py-3 rounded-xl border border-[#E5E7EB] text-sm text-[#171717] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:border-[#22C4F2] focus:ring-[#22C4F2]/20 transition-all"
                   ></textarea>
                 </div>
@@ -331,7 +343,8 @@ export default function BookingForm() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-3 bg-[#22C4F2] hover:bg-[#0FAAD8] text-white font-bold text-base py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0"
+              suppressHydrationWarning
+              className="w-full inline-flex items-center justify-center gap-3 bg-[#22C4F2] hover:bg-[#0FAAD8] text-white font-bold text-base py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
             >
               <Send className="w-5 h-5" />
               <span>Book Through WhatsApp</span>
@@ -360,4 +373,3 @@ export default function BookingForm() {
     </section>
   );
 }
-

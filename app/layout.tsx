@@ -99,7 +99,7 @@ export default function RootLayout({
   const faqJson = JSON.stringify(generateFaqSchema());
 
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <head>
         {/* Structured Data Scripts */}
         <script
@@ -115,10 +115,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: faqJson }}
         />
       </head>
-      <body className="antialiased text-[#171717] bg-white selection:bg-[#22C4F2]/20 selection:text-[#171717]">
+      <body
+        className="antialiased text-[#171717] bg-white selection:bg-[#22C4F2]/20 selection:text-[#171717]"
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
   );
 }
-
