@@ -410,3 +410,4 @@ export const FAQS: FAQItem[] = [
       "Dr. Tank is a professional service provider and does not sell cleaning liquids or water tank cleaning machines. However, our team uses professional-grade high-pressure jet cleaners, sludge slurry pumps, and hygienic cleaning methods during our service visits. Customers are welcome to contact our team to clarify the specific equipment and cleaning procedures used for their service.",
   },
 ];
+

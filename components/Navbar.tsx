@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { BRAND } from "@/lib/constants";
-import { Phone, Menu, X, CalendarCheck, Droplets } from "lucide-react";
+import { Phone, Menu, X, CalendarCheck } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +26,8 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Why Choose Us", href: "#why-choose-us" },
+    { name: "Locations", href: "#locations" },
+    { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -53,8 +56,15 @@ export default function Navbar() {
             onClick={(e) => handleScrollTo(e, "#hero")}
             className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#22C4F2]/10 border border-[#22C4F2]/30 flex items-center justify-center text-[#22C4F2] group-hover:bg-[#22C4F2] group-hover:text-white transition-all shadow-sm">
-              <Droplets className="w-6 h-6" />
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white border border-[#22C4F2]/30 p-0.5 flex items-center justify-center shadow-sm group-hover:border-[#22C4F2] transition-all">
+              <Image
+                src="/images/logo.jpeg"
+                alt="Dr. Tank Logo"
+                fill
+                sizes="48px"
+                className="object-contain p-0.5"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-2xl font-black tracking-tight text-[#171717] leading-none group-hover:text-[#22C4F2] transition-colors">
@@ -67,7 +77,7 @@ export default function Navbar() {
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-7">
             {navLinks.map((link) => (
               <a
                 key={link.name}

@@ -11,12 +11,24 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Headlines & CTA */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            {/* Tag / Category Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F0FAFE] border border-[#22C4F2]/30 w-fit mb-5">
-              <span className="w-2 h-2 rounded-full bg-[#22C4F2] animate-pulse"></span>
-              <span className="text-xs sm:text-sm font-semibold text-[#171717] tracking-wide">
-                Professional Water Tank Cleaning Services in Kerala
-              </span>
+            {/* Brand Logo & Category Badge */}
+            <div className="flex items-center gap-3 mb-5">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden bg-white border-2 border-[#22C4F2]/40 p-1 shadow-md shrink-0">
+                <Image
+                  src="/images/logo.jpeg"
+                  alt="Dr. Tank Official Logo"
+                  fill
+                  sizes="56px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#F0FAFE] border border-[#22C4F2]/30">
+                <span className="w-2 h-2 rounded-full bg-[#22C4F2] animate-pulse"></span>
+                <span className="text-xs sm:text-sm font-semibold text-[#171717] tracking-wide">
+                  Water Tank Cleaning Services in Kerala
+                </span>
+              </div>
             </div>
 
             {/* H1 Heading */}
@@ -122,9 +134,11 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Decorative side badge */}
-              <div className="hidden sm:flex absolute -top-4 -right-4 bg-white px-4 py-2.5 rounded-xl shadow-lg border border-[#E5E7EB] items-center gap-2.5">
-                <div className="w-3 h-3 rounded-full bg-[#22C4F2]"></div>
+              {/* Decorative side badge with official logo */}
+              <div className="hidden sm:flex absolute -top-4 -right-4 bg-white px-3.5 py-2 rounded-xl shadow-lg border border-[#E5E7EB] items-center gap-2.5">
+                <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[#22C4F2]/30 shrink-0">
+                  <Image src="/images/logo.jpeg" alt="Dr. Tank" fill className="object-contain" />
+                </div>
                 <span className="text-xs font-bold text-[#171717]">
                   Overhead • Sump • STP • ETP
                 </span>

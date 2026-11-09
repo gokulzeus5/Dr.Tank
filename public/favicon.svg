@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22C4F2" />
+      <stop offset="100%" stop-color="#0FAAD8" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#grad)" />
+  <!-- Water Droplet Shield -->
+  <path d="M16 6C16 6 10 13.5 10 18C10 21.31 12.69 24 16 24C19.31 24 22 21.31 22 18C22 13.5 16 6 16 6Z" fill="#FFFFFF" />
+  <!-- Medical Plus / Care Accent inside drop -->
+  <path d="M16 14V20M13 17H19" stroke="#22C4F2" stroke-width="2" stroke-linecap="round" />
+</svg>

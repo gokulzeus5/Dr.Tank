@@ -1,6 +1,7 @@
 import React from "react";
+import Image from "next/image";
 import { BRAND } from "@/lib/constants";
-import { Droplets, Phone, Mail, MapPin, ChevronRight, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, ChevronRight, MessageCircle } from "lucide-react";
 import { QUICK_WHATSAPP_URLS } from "@/lib/whatsapp";
 
 export default function Footer() {
@@ -9,7 +10,6 @@ export default function Footer() {
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Why Choose Us", href: "#why-choose-us" },
-    { name: "Packages", href: "#packages" },
     { name: "Locations", href: "#locations" },
     { name: "FAQ", href: "#faq" },
     { name: "Contact", href: "#contact" },
@@ -30,8 +30,14 @@ export default function Footer() {
           {/* Brand & Overview (Col 1-5) */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#22C4F2] flex items-center justify-center text-white shadow">
-                <Droplets className="w-6 h-6" />
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-white border border-[#22C4F2]/30 p-1 flex items-center justify-center shadow">
+                <Image
+                  src="/images/logo.jpeg"
+                  alt="Dr. Tank Logo"
+                  fill
+                  sizes="48px"
+                  className="object-contain p-0.5"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black tracking-tight text-white leading-none">

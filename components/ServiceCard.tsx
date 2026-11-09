@@ -81,3 +81,4 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     </article>
   );
 }
+
